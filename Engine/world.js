@@ -7,7 +7,7 @@ class World {
         this.frameRate = 1000/60;
 
         // Game entities list
-        this.entitiesList = [];
+        this.gameEntities = new Entities();
     }
 
 
@@ -44,14 +44,14 @@ class World {
     render() {
         Utils.clearScreen(); 
         
-        for(var i = 0; i < this.entitiesList.length; i++)
-            this.entitiesList[i].render();
+        for(var i = 0; i < this.gameEntities.list.length; i++)
+            this.gameEntities.list[i].render();
     }
 
 
     // Called every frame 
     update(){        
-        for(var i = 0; i < this.entitiesList.length; i++)
-            this.entitiesList[i].update();
+        for(var i = 0; i < this.gameEntities.list.length; i++)
+            this.gameEntities.list[i].update();
     }
 }
