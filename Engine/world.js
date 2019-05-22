@@ -18,6 +18,10 @@ class World {
         
         // Start the game loop
         requestAnimationFrame(this.gameLoop.bind(this));
+
+        // Call initialize of every entities
+        for(var i = 0; i < this.gameEntities.list.length; i++)
+            this.gameEntities.list[i].initialize();
     }
     
 
@@ -44,13 +48,15 @@ class World {
     render() {
         Utils.clearScreen(); 
         
+        // Call render of every entities
         for(var i = 0; i < this.gameEntities.list.length; i++)
             this.gameEntities.list[i].render();
     }
 
 
     // Called every frame 
-    update(){        
+    update(){     
+        // Call update of every entities   
         for(var i = 0; i < this.gameEntities.list.length; i++)
             this.gameEntities.list[i].update();
     }
