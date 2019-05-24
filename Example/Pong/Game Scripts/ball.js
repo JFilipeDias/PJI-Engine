@@ -1,4 +1,4 @@
-class Ball{
+class Ball extends Entity{
     constructor(posX,posY,speedX,speedY,radius,color) {
         this.posX = posX;
 		this.posY = posY;
@@ -7,21 +7,15 @@ class Ball{
 		this.radius = radius;
         this.color = color;
 	}
-	
-
-	// Call once per entity
-	initialize(){
-
-	}
 
 
-	// Called every loop
+    // Called on loop to physics
     update(){
         this.move();
     }
 
 
-	// Called every frame
+    // Called on loop to render 
     render() {
 		Utils.colorCircle(this.posX,this.posY,this.radius,this.color);
 	}

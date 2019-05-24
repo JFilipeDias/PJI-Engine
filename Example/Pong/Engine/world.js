@@ -7,7 +7,7 @@ class World {
         this.frameRate = 1000/60;
 
         // Game entities list
-        this.gameEntities = new Entities();
+        this.gameHierarchy = new Hierarchy();
     }
 
 
@@ -21,7 +21,7 @@ class World {
 
         // Call initialize of every entities
         for(var i = 0; i < this.gameEntities.list.length; i++)
-            this.gameEntities.list[i].initialize();
+            this.gameHierarchy.entityList[i].initialize();
     }
     
 
@@ -50,7 +50,7 @@ class World {
         
         // Call render of every entities
         for(var i = 0; i < this.gameEntities.list.length; i++)
-            this.gameEntities.list[i].render();
+            this.gameHierarchy.entityList[i].render();
     }
 
 
@@ -58,6 +58,6 @@ class World {
     update(){     
         // Call update of every entities   
         for(var i = 0; i < this.gameEntities.list.length; i++)
-            this.gameEntities.list[i].update();
+            this.gameHierarchy.entityList[i].update();
     }
 }
