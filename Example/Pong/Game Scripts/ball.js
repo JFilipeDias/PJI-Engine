@@ -1,12 +1,11 @@
 class Ball extends Entity{
-    constructor(posX,posY,speedX,speedY,radius,color) {
-		super();
-		this.posX = posX;
-		this.posY = posY;
-		this.speedX = speedX;
+    constructor(name, positionX, positionY, speedX,speedY, radius, color) {
+		super(name, positionX, positionY, radius*2, radius*2);
+
+		this.speedX = speedX
 		this.speedY = speedY;
 		this.radius = radius;
-        this.color = color;
+		this.color = color;
 	}
 
 
@@ -18,35 +17,41 @@ class Ball extends Entity{
 
     // Called on loop to render 
     render() {
-		Utils.colorCircle(this.posX,this.posY,this.radius,this.color);
+		Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
+	}
+
+
+    // Called when detect a colision
+	onCollisionEnter(other){
+		this.speedX *= -1;
 	}
 
 
 	// Move the ball
     move() {
-        this.posX += this.speedX;
-        this.posY += this.speedY;
+        this.positionX += this.speedX;
+        this.positionY += this.speedY;
 
-        if(this.posX < 0) {
+        if(this.positionX < 0) {
 			this.speedX *= -1;
             //this.resetPos(400,300);
 		}
-		if(this.posX > 800) {
+		if(this.positionX > 800) {
 			this.speedX *= -1;
 			//this.resetPos(400,300);
 		}
-		if(this.posY < 0) {
+		if(this.positionY < 0) {
 			this.speedY *= -1;
 		}
-		if(this.posY > 600) {
+		if(this.positionY > 600) {
 			this.speedY *= -1;
 		}
 	}
 	
 	
 	// Reset ball position
-    resetPos(posX, posY) {
-		this.posX = posX;
-		this.posY = posY;
+    resetPos(positionX, positionY) {
+		this.positionX = positionX;
+        this.positionY = positionY;
 	}
 }
