@@ -20,7 +20,7 @@ class World {
         requestAnimationFrame(this.gameLoop.bind(this));
 
         // Call initialize of every entities
-        for(var i = 0; i < this.gameEntities.list.length; i++)
+        for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
             this.gameHierarchy.entityList[i].initialize();
     }
     
@@ -41,23 +41,24 @@ class World {
         }
         
         this.render();
+        requestAnimationFrame(this.gameLoop.bind(this));
     }
 
 
-    // Rende the game canvas
+    // Called on loop to render 
     render() {
         Utils.clearScreen(); 
         
         // Call render of every entities
-        for(var i = 0; i < this.gameEntities.list.length; i++)
+        for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
             this.gameHierarchy.entityList[i].render();
     }
 
 
-    // Called every frame 
+    // Called on loop to physics
     update(){     
         // Call update of every entities   
-        for(var i = 0; i < this.gameEntities.list.length; i++)
+        for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
             this.gameHierarchy.entityList[i].update();
     }
 }

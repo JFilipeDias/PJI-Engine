@@ -1,4 +1,4 @@
-class Entity{
+    class Entity{
 
     // Called once per entity
     initialize(){

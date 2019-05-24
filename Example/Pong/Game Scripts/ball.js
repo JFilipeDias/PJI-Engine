@@ -1,6 +1,7 @@
 class Ball extends Entity{
     constructor(posX,posY,speedX,speedY,radius,color) {
-        this.posX = posX;
+		super();
+		this.posX = posX;
 		this.posY = posY;
 		this.speedX = speedX;
 		this.speedY = speedY;
