@@ -23,6 +23,8 @@ class Ball extends Entity{
 
     // Called when detect a colision
 	onCollisionEnter(other){
+		super(other);
+		
 		this.speedX *= -1;
 	}
 
