@@ -1,6 +1,5 @@
-class Entity{
-    constructor(name, positionX, positionY, width, height){
-        this.name = name;
+class Entity {
+    constructor(positionX, positionY, width, height) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;
@@ -8,25 +7,25 @@ class Entity{
     }
 
     // Called once per entity
-    initialize(){
+    initialize() {
 
     }
 
 
     // Called on loop to physics
-    update(){
+    update() {
 
     }
 
 
     // Called when detect a colision
-    onCollisionEnter(other){
+    onCollisionEnter(other) {
 
     }
 
 
     // Called on loop to render 
-    render(){
+    render() {
 
     }
 

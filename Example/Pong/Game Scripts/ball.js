@@ -1,6 +1,6 @@
-class Ball extends Entity{
-    constructor(name, positionX, positionY, speedX,speedY, radius, color) {
-		super(name, positionX, positionY, radius*2, radius*2);
+class Ball extends Entity {
+    constructor(positionX, positionY, speedX,speedY, radius, color) {
+		super(positionX, positionY, radius*2, radius*2);
 
 		this.speedX = speedX
 		this.speedY = speedY;
@@ -10,28 +10,9 @@ class Ball extends Entity{
 
 
     // Called on loop to physics
-    update(){
-        this.move();
-    }
-
-
-    // Called on loop to render 
-    render() {
-		Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
-	}
-
-
-    // Called when detect a colision
-	onCollisionEnter(other){
-		super(other);
-		
-		this.speedX *= -1;
-	}
-
-
-	// Move the ball
-    move() {
-        this.positionX += this.speedX;
+    update() {
+		// Move the ball
+		this.positionX += this.speedX;
         this.positionY += this.speedY;
 
         if(this.positionX < 0) {
@@ -48,6 +29,20 @@ class Ball extends Entity{
 		if(this.positionY > 600) {
 			this.speedY *= -1;
 		}
+    }
+
+
+    // Called on loop to render 
+    render() {
+		Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
+	}
+
+
+    // Called when detect a colision
+	onCollisionEnter(other) {
+		super(other);
+		
+		this.speedX *= -1;
 	}
 	
 	
