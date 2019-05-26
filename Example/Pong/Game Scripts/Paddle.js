@@ -1,18 +1,31 @@
 class Paddle extends Entity{
-    constructor (positionX, positionY, width, height, color, isPlayable) {
+    constructor (positionX, positionY, width, height, speedY, color, isPlayable) {
         super(positionX, positionY, width, height)
 
+        this.speedY = speedY;
         this.color = color;
         this.isPlayable = isPlayable;
-	}
+    }
     
+    
+    // Called once per entity
+    initialize(){
+        if(this.isPlayable){
+            window.addEventListener('keyup', function(event) { Input.onKeyUp(event); }, false);
+            window.addEventListener('keydown', function(event) { Input.onKeyDown(event); }, false);
+        }
+    }
 
     // Called on loop to physics
     update () {
-        if(isPlayable) {
-            this.positionY = MouseInput.x - (this.width/2);
+        if(this.isPlayable) {
+            if(Input.getKeyDown(Input.keyUp))
+                this.positionY += this.speedY;
+                
+            if(Input.getKeyDown(Input.keyDown))
+                this.positionY -= this.speedY;
         } else {
-            this.positionY
+            //this.positionY
         }
     }
             

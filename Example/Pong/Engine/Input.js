@@ -1,24 +1,23 @@
 class Input{
+    constructor(){ 
+        this._pressed = {};
+        this.keyLeft = 37;
+        this.keyUp = 38;
+        this.keyRight = 39;
+        this.keyDown = 40;
+    }
 
-    static isDown(keyCode){
-        return this.pressed[keyCode];
+    static getKeyDown(keyCode){
+        return this._pressed[keyCode];
     }
 
     
     static onKeyDown(event){
-        this.pressed[event.keyCode] = true;
+        this._pressed[event.keyCode] = true;
     }
 
 
     static onKeyUp(event){
-        delete this.pressed[event.keyCode];
+        delete this._pressed[event.keyCode];
     }
 }
-
-
-// Static property
-this.pressed;
-this.keyLeft = 37;
-this.keyUp = 38;
-this.keyRight = 39;
-this.keyDown = 40;

@@ -48,7 +48,6 @@ class World {
     // Called on loop to render 
     render() {
         Utils.clearScreen(); 
-        
 
         // Call render of every entities
         for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
