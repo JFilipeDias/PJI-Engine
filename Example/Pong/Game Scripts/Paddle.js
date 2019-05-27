@@ -12,12 +12,13 @@ class Paddle extends Entity {
     update() {
         if(this.isPlayable) {
             if(Input.getKeyDown('ArrowUp'))
-                console.log("Sobe")
-                //this.positionY += this.speedY;
+                this.positionY -= this.speedY;
+                //console.log("Sobe")
                 
             if(Input.getKeyDown('ArrowDown'))
-                console.log("Desce")
-                //this.positionY -= this.speedY;
+                this.positionY += this.speedY;
+                //console.log("Desce")
+                
         } else {
             //this.positionY
         }

@@ -17,7 +17,8 @@ class World {
         World.canvasContext = World.canvas.getContext('2d');
         
         document.addEventListener('keydown', Input.onKeyDown);
-        
+        document.addEventListener('keyup', Input.onKeyUp);
+
         // Start the game loop
         requestAnimationFrame(this.gameLoop.bind(this));
 

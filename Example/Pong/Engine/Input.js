@@ -1,23 +1,30 @@
 let _pressed;
 
 class Input {
-    /*static get pressed() {
+    static get pressed() {
         return _pressed;
     }
 
+
     static set pressed(pressed){
         _pressed = pressed;
-    }*/
+    }
 
 
     static getKeyDown(keyCode) {
-        return _pressed = keyCode;
+        console.log(this.pressed + keyCode);
+        return this.pressed == keyCode;
     }
 
     
     static onKeyDown(event) {
-        _pressed = event.code;
+        this.pressed = event.code;
         
-        console.log("Apertou " + _pressed);
+        //console.log("Apertou " + this.pressed);
+    }
+
+    
+    static onKeyUp(){
+        this.pressed = '';
     }
 }
