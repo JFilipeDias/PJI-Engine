@@ -1,4 +1,4 @@
-class Utils{
+class Utils {
     
     // Render a colorful rectangle
     static colorRect(topLeftX,topLeftY, boxWidth,boxHeight, fillColor) {
@@ -24,7 +24,7 @@ class Utils{
 
 
     // Render a image on canvas
-    static renderImage(imageSource, posX, posY){
+    static renderImage(imageSource, posX, posY) {
         var image = document.createElement("img");
         image.setAttribute('src', imageSource);
         World.canvasContext.drawImage(image, posX, posY);

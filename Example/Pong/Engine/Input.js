@@ -1,23 +1,23 @@
-class Input{
-    constructor(){ 
-        this._pressed = {};
-        this.keyLeft = 37;
-        this.keyUp = 38;
-        this.keyRight = 39;
-        this.keyDown = 40;
+let _pressed;
+
+class Input {
+    /*static get pressed() {
+        return _pressed;
     }
 
-    static getKeyDown(keyCode){
-        return this._pressed[keyCode];
+    static set pressed(pressed){
+        _pressed = pressed;
+    }*/
+
+
+    static getKeyDown(keyCode) {
+        return _pressed = keyCode;
     }
 
     
-    static onKeyDown(event){
-        this._pressed[event.keyCode] = true;
-    }
-
-
-    static onKeyUp(event){
-        delete this._pressed[event.keyCode];
+    static onKeyDown(event) {
+        _pressed = event.code;
+        
+        console.log("Apertou " + _pressed);
     }
 }

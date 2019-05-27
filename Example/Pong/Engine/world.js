@@ -12,9 +12,11 @@ class World {
 
 
     // Called once when the game start
-    initialize(){
+    initialize() {
         World.canvas = document.getElementById('gameCanvas');
         World.canvasContext = World.canvas.getContext('2d');
+        
+        document.addEventListener('keydown', Input.onKeyDown);
         
         // Start the game loop
         requestAnimationFrame(this.gameLoop.bind(this));
@@ -22,12 +24,13 @@ class World {
         // Call initialize of every entities
         for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
             this.gameHierarchy.entityList[i].initialize();
+        
     }
     
 
     // Main game loop to control updates 
-    gameLoop(timeStamp){
-        if (timeStamp < this.lastFrameTime + this.frameRate){
+    gameLoop(timeStamp) {
+        if (timeStamp < this.lastFrameTime + this.frameRate) {
             requestAnimationFrame(this.gameLoop.bind(this));
             return;
         }
@@ -56,25 +59,27 @@ class World {
 
 
     // Called on loop to physics
-    update(){     
-        // Call update of every entities   
-        for(var i = 0; i < this.gameHierarchy.entityList.length; i++){
+    update() {     
+        // Call update of every entities and check collisions
+        for(var i = 0; i < this.gameHierarchy.entityList.length; i++) {
             this.gameHierarchy.entityList[i].update();
             
-            if(i < this.gameHierarchy.entityList.length)
-                this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[i + 1]);
-            else
-                this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[0]);
+            if(this.gameHierarchy.entityList.length > 1) {
+                if(i < this.gameHierarchy.entityList.length - 1)
+                    this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[i + 1]);
+                else
+                    this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[0]);
+            }
         }
     }
 
 
     // AABB Collision
-    checkColision(entity1, entity2){
+    checkColision(entity1, entity2) {
         if(entity1.positionX < entity2.positionX + entity2.width &&
             entity1.positionX + entity1.width > entity2.positionX &&
-            entity1.positionY < player2.positionY + entity2.height &&
-            entity1.positionY + entity1.height > entity2.positionY){
+            entity1.positionY < entity2.positionY + entity2.height &&
+            entity1.positionY + entity1.height > entity2.positionY) {
 
             entity1.onCollisionEnter(entity2);
             entity2.onCollisionEnter(entity1);

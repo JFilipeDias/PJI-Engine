@@ -6,6 +6,7 @@ class Entity {
         this.height = height;
     }
 
+    
     // Called once per entity
     initialize() {
 
