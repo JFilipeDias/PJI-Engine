@@ -27,7 +27,6 @@ class World {
         // Call initialize of every entities
         for(var i = 0; i < Hierarchy.entityList.length; i++)
             Hierarchy.entityList[i].initialize();
-        
     }
     
 
@@ -64,37 +63,47 @@ class World {
     // Called on loop to physics
     update() {     
         // Call update of every entities and check collisions
-        for(var i = 0; i < Hierarchy.entityList.length; i++) {
-            Hierarchy.entityList[i].update();
+        for(var count0 = 0; count0 < Hierarchy.entityList.length; count0++) {
+            Hierarchy.entityList[count0].update();
             
+            // Pears checking
             if(Hierarchy.entityList.length > 1) {
-                if(i < Hierarchy.entityList.length - 1)
-                    this.checkColision(Hierarchy.entityList[i], Hierarchy.entityList[i + 1]);
-                else
-                    this.checkColision(Hierarchy.entityList[i], Hierarchy.entityList[0]);
+                for(var count1 = count0 + 1; count1 < Hierarchy.entityList.length; count1++)
+                    this.checkColision(Hierarchy.entityList[count0], Hierarchy.entityList[count1]);
+                    
             }
         }
     }
 
 
-    // AABB Collision
     checkColision(entity1, entity2) {
-        if(entity1.positionX < entity2.positionX + entity2.width &&
-            entity1.positionX + entity1.width > entity2.positionX &&
-            entity1.positionY < entity2.positionY + entity2.height &&
-            entity1.positionY + entity1.height > entity2.positionY) {
+        var minimumX1 = entity1.positionX - entity1.width/2;
+        var minimumY1 = entity1.positionY - entity1.height/2;
+        var maximumX1 = entity1.positionX + entity1.width/2;
+        var maximumY1 = entity1.positionY + entity1.height/2;
+
+        var minimumX2 = entity2.positionX - entity2.width/2;
+        var minimumY2 = entity2.positionY - entity2.height/2;
+        var maximumX2 = entity2.positionX + entity2.width/2;
+        var maximumY2 = entity2.positionY + entity2.height/2;
+
+
+        if(maximumX1 > minimumX2 &&
+            minimumX1 < maximumX2 &&
+            maximumY1 > minimumY2 &&
+            minimumY1 < maximumY2) {
             
-            if(!entity1.isColliding){
+            if(!entity1.isColliding) {
                 entity1.isColliding = true;
                 entity1.onCollisionEnter(entity2);
             }
 
-            if(!entity2.isColliding){
+            if(!entity2.isColliding) {
                 entity2.isColliding = true;
                 entity2.onCollisionEnter(entity1);
             }
         }
-        else{
+        else {
             entity1.isColliding = false;
             entity2.isColliding = false;
         }

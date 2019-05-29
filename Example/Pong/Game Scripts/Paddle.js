@@ -40,6 +40,6 @@ class Paddle extends Entity {
     
     // Called on loop to render 
 	render() {
-		Utils.colorRect(this.positionX - this.width/2, this.positionY - this.height/2, this.width, this.height, this.color);
+		Utils.colorRect(this.positionX, this.positionY, this.width, this.height, this.color);
 	}
 }
