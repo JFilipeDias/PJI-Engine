@@ -16,12 +16,10 @@ class Ball extends Entity {
 		this.positionY += this.speedY;
 
 		if (this.positionX < 0) {
-			//this.resetPosition(World.canvas.width/2, World.canvas.height/2);
-			this.speedX *= -1;
+			this.resetPosition(World.canvas.width/2, World.canvas.height/2);
 		}
 		if (this.positionX > 800) {
-			//this.resetPosition(World.canvas.width/2, World.canvas.height/2);
-			this.speedX *= -1;
+			this.resetPosition(World.canvas.width/2, World.canvas.height/2);
 		}
 		if (this.positionY < 0) {
 			this.speedY *= -1;
@@ -46,6 +44,7 @@ class Ball extends Entity {
 
 	// Reset ball position
 	resetPosition(positionX, positionY) {
+		this.speedX *= -1;
 		this.positionX = positionX;
 		this.positionY = positionY;
 	}

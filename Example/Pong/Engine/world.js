@@ -5,9 +5,6 @@ class World {
         this.deltaTime = 0;
         this.lastFrameTime = 0;
         this.frameRate = 1000/60;
-
-        // Game entities list
-        this.gameHierarchy = new Hierarchy();
     }
 
 
@@ -21,12 +18,15 @@ class World {
         document.addEventListener('keyup', Input.onKeyUp);
         document.addEventListener('mousemove', Input.getMousePos);
         
+        // Game entities list
+        Hierarchy.createHierarchy();
+
         // Start the game loop
         requestAnimationFrame(this.gameLoop.bind(this));
 
         // Call initialize of every entities
-        for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
-            this.gameHierarchy.entityList[i].initialize();
+        for(var i = 0; i < Hierarchy.entityList.length; i++)
+            Hierarchy.entityList[i].initialize();
         
     }
     
@@ -56,22 +56,22 @@ class World {
         Utils.clearScreen(); 
 
         // Call render of every entities
-        for(var i = 0; i < this.gameHierarchy.entityList.length; i++)
-            this.gameHierarchy.entityList[i].render();
+        for(var i = 0; i < Hierarchy.entityList.length; i++)
+            Hierarchy.entityList[i].render();
     }
 
 
     // Called on loop to physics
     update() {     
         // Call update of every entities and check collisions
-        for(var i = 0; i < this.gameHierarchy.entityList.length; i++) {
-            this.gameHierarchy.entityList[i].update();
+        for(var i = 0; i < Hierarchy.entityList.length; i++) {
+            Hierarchy.entityList[i].update();
             
-            if(this.gameHierarchy.entityList.length > 1) {
-                if(i < this.gameHierarchy.entityList.length - 1)
-                    this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[i + 1]);
+            if(Hierarchy.entityList.length > 1) {
+                if(i < Hierarchy.entityList.length - 1)
+                    this.checkColision(Hierarchy.entityList[i], Hierarchy.entityList[i + 1]);
                 else
-                    this.checkColision(this.gameHierarchy.entityList[i], this.gameHierarchy.entityList[0]);
+                    this.checkColision(Hierarchy.entityList[i], Hierarchy.entityList[0]);
             }
         }
     }
