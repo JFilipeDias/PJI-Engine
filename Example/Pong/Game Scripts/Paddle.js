@@ -11,16 +11,14 @@ class Paddle extends Entity {
     // Called on loop to physics
     update() {
         if(this.isPlayable) {
-            if(Input.getKeyDown('ArrowUp'))
+            if(Input.getKeyDown('ArrowUp') && this.positionY - this.height/2 > 0)
                 this.positionY -= this.speedY;
-                //console.log("Sobe")
                 
-            if(Input.getKeyDown('ArrowDown'))
+            if(Input.getKeyDown('ArrowDown') && this.positionY + this.height/2 < World.canvas.height)
                 this.positionY += this.speedY;
-                //console.log("Desce")
                 
         } else {
-            //this.positionY
+            
         }
     }
             

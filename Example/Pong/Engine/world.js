@@ -82,6 +82,8 @@ class World {
             entity1.positionY < entity2.positionY + entity2.height &&
             entity1.positionY + entity1.height > entity2.positionY) {
 
+            console.log("Colidiu");
+
             entity1.onCollisionEnter(entity2);
             entity2.onCollisionEnter(entity1);
         }
