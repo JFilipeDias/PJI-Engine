@@ -16,9 +16,11 @@ class World {
         World.canvas = document.getElementById('gameCanvas');
         World.canvasContext = World.canvas.getContext('2d');
         
+        // Event listeners to inputs
         document.addEventListener('keydown', Input.onKeyDown);
         document.addEventListener('keyup', Input.onKeyUp);
-
+        document.addEventListener('mousemove', Input.getMousePos);
+        
         // Start the game loop
         requestAnimationFrame(this.gameLoop.bind(this));
 
@@ -81,11 +83,20 @@ class World {
             entity1.positionX + entity1.width > entity2.positionX &&
             entity1.positionY < entity2.positionY + entity2.height &&
             entity1.positionY + entity1.height > entity2.positionY) {
+            
+            if(!entity1.isColliding){
+                entity1.isColliding = true;
+                entity1.onCollisionEnter(entity2);
+            }
 
-            console.log("Colidiu");
-
-            entity1.onCollisionEnter(entity2);
-            entity2.onCollisionEnter(entity1);
+            if(!entity2.isColliding){
+                entity2.isColliding = true;
+                entity2.onCollisionEnter(entity1);
+            }
+        }
+        else{
+            entity1.isColliding = false;
+            entity2.isColliding = false;
         }
     }
 }
