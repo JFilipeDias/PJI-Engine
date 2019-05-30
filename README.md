@@ -67,7 +67,7 @@ class Hierarchy {
 }
 ```
 
-## Medodos de Entity
+## Medodos da classe Entity
 
 ### initialize()
 O método initialize é chamado apenas uma vez por entidade no momento em que a pagina web é carregada. Pode ser utilizada para definir algumas coisas no inicio do jogo.
@@ -94,6 +94,18 @@ update() {
 }
 ```
 
+### onCollisionEnter()
+O método onCollisionEnter é utilizado para identificar que uma entidade iniciou uma colisão com outra. Recebe por parâmetro o objeto other que é a outra entidade que faz parte da colisão.
+
+```javascript
+// Called when detect a colision
+onCollisionEnter(other) {
+    if(other.name == 'Player Paddle' || other.name == 'Computer Paddle')
+        this.speedX *= -1;
+}
+```
+
+
 
 ### render()
 O método render é chamado a cada frame do jogo. É utilizado para renderizar formas básicas, textos e imagens no canvas.
@@ -104,6 +116,8 @@ render() {
     Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
 }
 ```
+
+
 
 
 
