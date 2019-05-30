@@ -22,7 +22,7 @@ Logo abaixo é possível referenciar os scripts do jogo.
 Neste repositório há um exemplo de um jogo desenvolvido com a engine na pasta Exemple. O jogo é uma versão de Pong com o uso do mouse para movimentação da barra esquerda.
 
 ## Entidades
-A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](https://github.com/JFilipeDias/PJI-Engine#initialize), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
+A classe Entity é a classe mãe de todas entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](https://github.com/JFilipeDias/PJI-Engine#initialize), [update()](https://github.com/JFilipeDias/PJI-Engine#update), [onCollisionEnter()](https://github.com/JFilipeDias/PJI-Engine#oncollisionenter) e [render()](https://github.com/JFilipeDias/PJI-Engine#render). Não é necessário declarar todos os métodos no script da sua entidade.
 
 Para a entidade do seu jogo utilizar os metodos basta usar a herança do Javascript como no exemplo abaixo.
 
@@ -32,7 +32,7 @@ class MinhaClasse extends Entity {
 }
 ```
 
-Uma entidade possue propriedades name, positionX, positionY, width e height. Para defini-las basta usar o super da seguinte maneira.
+Todas as entidades possuem propriedades name, positionX, positionY, width e height. Para definir os valores dessas propriedades basta usar o super() no construtor da sua classe da seguinte maneira.
 
 ```javascript
 class MinhaClasse extends Entity {
@@ -141,3 +141,40 @@ if(Input.getKeyDown('Space')) {
 Os nome seguem o padrão de valores da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code#Code_values) do Javascript.
 
 ## Utilidades
+Há alguns metodos internos da engine que podem ser utilizados para rederizar textos, imagens e formas basicas no canvas.
+
+### colorRect()
+O método estático colorRect() é utilizado para renderizar um retângulo colorido no canvas. Recebe por parâmetro posiçãoX, posiçãoY, largura, altura e cor. O ponto pivô, ou seja, as coordenadas X e Y, ficam no centro do retângulo.
+
+```javascript
+render() {
+    Utils.colorRect(this.positionX , this.positionY, this.width, this.height, this.color);
+}
+```
+
+### colorCircle()
+O método estático colorCircle() é utilizado para renderizar um circulo colorido no canvas. Recebe por parâmetro posiçãoX, posiçãoY, raio e cor. O ponto pivô, ou seja, as coordenadas X e Y, ficam no centro do circulo.
+
+```javascript
+render() {
+    Utils.colorCircle(this.positionX , this.positionY, this.radius, this.color);
+}
+```
+
+### colorText()
+O método estático colorText() é utilizado para renderizar texto colorido no canvas. Recebe por parâmetro texto, posiçãoX, posiçãoY, tamanho, alinhamento e cor. O ponto pivô, ou seja, as coordenadas X e Y, dependem do [alinhamento](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign#Syntax) do texto que segue o padrão de sintaxe do Javascript. O tamanho do texto é um valor em pixel.
+
+```javascript
+render() {
+    Utils.colorText('Text', this.positionX, this.positionY, 32, 'center', this.color);
+}
+```
+
+### renderImage()
+O método estático renderImage() é utilizado para renderizar imagem no canvas. Recebe por parâmetro fonte, posiçãoX, posiçãoY, largura e altura. O ponto pivô, ou seja, as coordenadas X e Y, ficam no centro da imagem. A fonte da imagem é o caminho do arquivo no projeto ou link da imagem internet. São aceitos formatos JPG e PNG.
+
+```javascript
+render() {
+    Utils.renderImage('Images/Paddle.png', this.positionX, this.positionY, this.width, this.height);
+}
+```
