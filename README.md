@@ -1,5 +1,5 @@
 # PJI-Engine
-A PJI Engine é um protótipo de game engine para jogos 2D de navegador baseada em Javascript desenvolvida para a cadeira de Programação para Jogos I do curso de Sistemas e Mídias Digitais da Universidade Federal do Ceará.
+A PJI Engine é um protótipo de game engine para jogos 2D de navegador baseada em JavaScript desenvolvida para a cadeira de Programação para Jogos I do curso de Sistemas e Mídias Digitais da Universidade Federal do Ceará.
 
 ## Começando
 Para utilizar a engine, é necessário importar a pasta Engine para a raiz do seu projeto. Em seguida será necessário que o seu projeto possua um arquivo HTML. No arquivo deve ser criado um canvas com um id "gameCanvas" e referenciado todos os scripts da engine, como no exemplo abaixo.
@@ -24,7 +24,7 @@ Neste repositório há um exemplo de um jogo desenvolvido com a engine na pasta 
 ## Entidades
 A classe Entity é a classe mãe de todas entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](https://github.com/JFilipeDias/PJI-Engine#initialize), [update()](https://github.com/JFilipeDias/PJI-Engine#update), [onCollisionEnter()](https://github.com/JFilipeDias/PJI-Engine#oncollisionenter) e [render()](https://github.com/JFilipeDias/PJI-Engine#render). Não é necessário declarar todos os métodos no script da sua entidade.
 
-Para a entidade do seu jogo utilizar os metodos basta usar a herança do Javascript como no exemplo abaixo.
+Para a entidade do seu jogo utilizar os metodos basta usar a herança do JavaScript como no exemplo abaixo.
 
 ```javascript
 class MinhaClasse extends Entity {
@@ -138,7 +138,7 @@ if(Input.getKeyDown('Space')) {
 }
 ```
 
-Os nome seguem o padrão de valores da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code#Code_values) do Javascript.
+Os nome seguem o padrão de valores da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code#Code_values) do JavaScript.
 
 ## Utilidades
 Há alguns metodos internos da engine que podem ser utilizados para rederizar textos, imagens e formas basicas no canvas.
@@ -162,7 +162,7 @@ render() {
 ```
 
 ### colorText()
-O método estático colorText() é utilizado para renderizar texto colorido no canvas. Recebe por parâmetro texto, posiçãoX, posiçãoY, tamanho, alinhamento e cor. O ponto pivô, ou seja, as coordenadas X e Y, dependem do [alinhamento](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign#Syntax) do texto que segue o padrão de sintaxe do Javascript. O tamanho do texto é um valor em pixel.
+O método estático colorText() é utilizado para renderizar texto colorido no canvas. Recebe por parâmetro texto, posiçãoX, posiçãoY, tamanho, alinhamento e cor. O ponto pivô, ou seja, as coordenadas X e Y, dependem do [alinhamento](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign#Syntax) do texto que segue o padrão de sintaxe do JavaScript. O tamanho do texto é um valor em pixel.
 
 ```javascript
 render() {
