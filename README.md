@@ -42,7 +42,7 @@ class MinhaClasse extends Entity {
 
         this.speed = speed;
         this.color = color;
-}
+    }
 }
 ```
 
@@ -120,4 +120,24 @@ render() {
 ## Input
 A engine trata inputs do teclado e da posição do mouse. 
 
-A classe Input possui as propriedades 
+A classe Input possui as propriedades mouseX e mouseY para as cordenadas X e Y do mouse.
+
+```javascript
+if(this.isPlayable) {
+    // Mouse input
+    this.positionY = Input.mouseY;    
+}
+```
+
+Para checar input do teclado basta utilizar o método getKeyDown() da seguinte forma.
+
+```javascript
+// Start gameplay
+if(Input.getKeyDown('Space')) {
+    this.resetGameplay();
+}
+```
+
+Os nome seguem o padrão da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) do Javascript.
+
+## Utilidades
