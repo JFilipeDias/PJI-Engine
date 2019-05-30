@@ -41,6 +41,6 @@ class Paddle extends Entity {
     
     // Called on loop to render 
 	render() {
-		Utils.colorRect(this.positionX, this.positionY, this.width, this.height, this.color);
+        Utils.renderImage("Images/Paddle.png", this.positionX, this.positionY, this.width, this.height);
 	}
 }

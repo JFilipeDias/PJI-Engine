@@ -17,4 +17,9 @@ class Score extends Entity {
     increaseScoreValue() {
         this.value++;
     }
+
+
+    resetScore() {
+        this.value = 0;
+    }
 }

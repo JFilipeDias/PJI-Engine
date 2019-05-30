@@ -25,10 +25,10 @@ class Utils {
 
 
     // Render a image on canvas
-    static renderImage(imageSource, positionX, positionY) {
+    static renderImage(imageSource, positionX, positionY, width, height) {
         var image = document.createElement("img");
         image.setAttribute('src', imageSource);
-        World.canvasContext.drawImage(image, positionX, positionY);
+        World.canvasContext.drawImage(image, positionX - width/2, positionY - height/2);
     }
 
 
