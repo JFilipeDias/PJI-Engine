@@ -10,6 +10,7 @@ class Paddle extends Entity {
 
     // Called once per entity
     initialize(){
+        // Get the ball in entity list on hierarchy
         this.ballEntity = Hierarchy.entityList[0];
     }
 

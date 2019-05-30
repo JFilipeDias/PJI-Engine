@@ -16,9 +16,15 @@ class Ball extends Entity {
 		this.positionY += this.speedY;
 
 		if (this.positionX < 0) {
+			// Get the Computer Score in entity list on hierarchy
+			Hierarchy.entityList[4].increaseScoreValue();
+			
 			this.resetPosition(World.canvas.width/2, World.canvas.height/2);
 		}
 		if (this.positionX > 800) {
+			// Get the Player Score in entity list on hierarchy
+			Hierarchy.entityList[3].increaseScoreValue();
+			
 			this.resetPosition(World.canvas.width/2, World.canvas.height/2);
 		}
 		if (this.positionY < 0) {
@@ -38,7 +44,8 @@ class Ball extends Entity {
 
 	// Called when detect a colision
 	onCollisionEnter(other) {
-		this.speedX *= -1;
+		if(other.name == 'Player Paddle' || other.name == 'Computer Paddle')
+			this.speedX *= -1;
 	}
 
 
