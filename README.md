@@ -36,19 +36,18 @@ Uma entidade possue propriedades name, positionX, positionY, width e height. Par
 
 ```javascript
 class MinhaClasse extends Entity {
-    constructor(name, positionX, positionY, width, height, speedY, color, isPlayable) {
+    constructor(name, positionX, positionY, width, height, speed, color) {
         // Construtor da classe Entity
         super(name, positionX, positionY, width, height);
 
-		this.speedY = speedY;
-		this.radius = radius;
+		this.speed = speed;
 		this.color = color;
 	}
 }
 ```
 
 ## Hierarquia
-Para que suas entidades sejam colocadas na cena do jogo, ou seja, renderizadas no canvas é necessário o uso da classe Hierarchy. Ela está dentro da pasta Engine. Será necessário instanciar as entidades dentro do metodo createHierarchy() e popular o vetor estático entityList com as entidades instanciadas como feito a seguir.
+Para que suas entidades sejam colocadas na cena do jogo, ou seja, renderizadas no canvas, é necessário fazer algumas alterações na classe Hierarchy. Ela está dentro da pasta Engine. Você deve instanciar as entidades dentro do metodo estático createHierarchy() e popular o vetor estático entityList com as entidades instanciadas, como feito a seguir.
 
 ```javascript
 class Hierarchy {
@@ -70,8 +69,43 @@ class Hierarchy {
 
 ## Medodos de Entity
 
+### initialize()
+O método initialize é chamado apenas uma vez por entidade no momento em que a pagina web é carregada. Pode ser utilizada para definir algumas coisas no inicio do jogo.
+
+```javascript
+// Called once when the game start
+initialize() {
+    this.isStartScreen = true;
+    this.isGameOverScreen = false;
+    
+    this.playerWon = false;
+}
+```
+
 ### update()
-O método update é utilizado para atualizações de física como movimentar as entidades. Ele é chamado a cada 16ms
+O método update é utilizado para atualizações de física como movimentar as entidades já que ele é chamado constantimente em um tempo fixo de 16 milissegundos.
+
+```javascript
+// Called on loop to physics
+update() {
+    // Move the ball
+    this.positionX += this.speedX;
+    this.positionY += this.speedY;
+}
+```
+
+
+### render()
+O método render é chamado a cada frame do jogo. É utilizado para renderizar formas básicas, textos e imagens no canvas.
+
+```javascript
+// Called on loop to render 
+render() {
+    Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
+}
+```
+
+
 
  
 
