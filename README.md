@@ -19,7 +19,7 @@ Para utilizar a engine, é necessário importar a pasta Engine para a raiz do se
 ```
 Logo abaixo é possível referenciar os scripts do jogo.
 
-É possivel ver uma exemplo de jogo desenvolvido com a engine na pasta Exemple.
+Neste repositório há um exemplo de um jogo desenvolvido com a engine na pasta Exemple. O jogo é uma versão de Pong com o uso do mouse para movimentação da barra esquerda.
 
 ## Entidades
 A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos initialize(), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
@@ -48,7 +48,25 @@ class MinhaClasse extends Entity {
 ```
 
 ## Hierarquia
-Para que suas entidades aparessam no jogo é necessário o uso da classe Hierarchy. Ela está dentro da pasta Engine 
+Para que suas entidades sejam colocadas na cena do jogo, ou seja, renderizadas no canvas é necessário o uso da classe Hierarchy. Ela está dentro da pasta Engine. Será necessário instanciar as entidades dentro do metodo createHierarchy() e popular o vetor estático entityList com as entidades instanciadas como feito a seguir.
+
+```javascript
+class Hierarchy {
+    static entityList;
+
+    static createHierarchy() {
+        var ball = new Ball('Ball', 400, 300, 4, 5, 10, 'white');
+        var playerPaddle = new Paddle('Player Paddle', 50, 300, 10, 80, 10, 'white', true);
+        var computerPaddle = new Paddle('Computer Paddle', World.canvas.width - 50, 300, 10, 80, 4.5, 'white', false);
+        var playerScore = new Score('Player Score', 200, 75, 32, 'white');
+        var computerScore = new Score('Computer Score', 600, 75, 32, 'white');
+        var gameManager = new GameManager();
+
+        // Game entities list
+        Hierarchy.entityList = [ball, playerPaddle, computerPaddle, playerScore, computerScore, gameManager];
+    }
+}
+```
 
 ## Medodos de Entity
 
