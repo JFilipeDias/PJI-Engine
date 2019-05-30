@@ -17,9 +17,10 @@ class Utils {
 
 
     // Render a colorful text
-	static colorText(text, positionX, positionY, size, fillColor) {
+	static colorText(text, positionX, positionY, size, align, fillColor) {
         World.canvasContext.fillStyle = fillColor;
         World.canvasContext.font =  size + 'px serif';
+        World.canvasContext.textAlign  =  align;
 		World.canvasContext.fillText(text, positionX, positionY);
 	}
 

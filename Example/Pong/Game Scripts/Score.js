@@ -10,7 +10,7 @@ class Score extends Entity {
 
   	// Called on loop to render 
     render() {
-        Utils.colorText(this.value, this.positionX, this.positionY, this.size, this.color);
+        Utils.colorText(this.value, this.positionX, this.positionY, this.size, 'center', this.color);
     }
 
 

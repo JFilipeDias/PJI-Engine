@@ -18,15 +18,6 @@ class Paddle extends Entity {
     // Called on loop to physics
     update() {
         if(this.isPlayable) {
-            // Keyboard input
-
-            /*if(Input.getKeyDown('ArrowUp') && this.positionY - this.height/2 > 0)
-                this.positionY -= this.speedY;
-                
-            if(Input.getKeyDown('ArrowDown') && this.positionY + this.height/2 < World.canvas.height)
-                this.positionY += this.speedY;
-            */
-
             // Mouse input
             this.positionY = Input.mouseY;    
             
@@ -41,6 +32,6 @@ class Paddle extends Entity {
     
     // Called on loop to render 
 	render() {
-        Utils.renderImage("Images/Paddle.png", this.positionX, this.positionY, this.width, this.height);
+        Utils.renderImage('Images/Paddle.png', this.positionX, this.positionY, this.width, this.height);
 	}
 }
