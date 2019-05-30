@@ -37,11 +37,11 @@ Uma entidade possue propriedades name, positionX, positionY, width e height. Par
 ```javascript
 class MinhaClasse extends Entity {
     constructor(name, positionX, positionY, width, height, speed, color) {
-        // Construtor da classe Entity
-        super(name, positionX, positionY, width, height);
+    // Construtor da classe Entity
+    super(name, positionX, positionY, width, height);
 
-		this.speed = speed;
-		this.color = color;
+    this.speed = speed;
+    this.color = color;
 	}
 }
 ```
@@ -117,9 +117,7 @@ render() {
 }
 ```
 
+## Input
+A engine trata inputs do teclado e da posição do mouse. 
 
-
-
-
- 
-
+A classe Input possui as propriedades 
