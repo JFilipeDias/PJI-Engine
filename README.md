@@ -22,7 +22,7 @@ Logo abaixo é possível referenciar os scripts do jogo.
 Neste repositório há um exemplo de um jogo desenvolvido com a engine na pasta Exemple. O jogo é uma versão de Pong com o uso do mouse para movimentação da barra esquerda.
 
 ## Entidades
-A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](### initialize()), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
+A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](https://github.com/JFilipeDias/PJI-Engine#initialize), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
 
 Para a entidade do seu jogo utilizar os metodos basta usar a herança do Javascript como no exemplo abaixo.
 
