@@ -22,7 +22,7 @@ Logo abaixo é possível referenciar os scripts do jogo.
 Neste repositório há um exemplo de um jogo desenvolvido com a engine na pasta Exemple. O jogo é uma versão de Pong com o uso do mouse para movimentação da barra esquerda.
 
 ## Entidades
-A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos initialize(), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
+A classe Entity é a classe base para as entidades do jogo. Quando uma entidade do jogo herda de Entity é possível utilizar os métodos [initialize()](### initialize()), update(), onCollisionEnter() e render(). Não é necessário declarar todos no script da sua entidade.
 
 Para a entidade do seu jogo utilizar os metodos basta usar a herança do Javascript como no exemplo abaixo.
 
@@ -73,7 +73,7 @@ class Hierarchy {
 O método initialize é chamado apenas uma vez por entidade no momento em que a pagina web é carregada. Pode ser utilizada para definir algumas coisas no inicio do jogo.
 
 ```javascript
-// Called once when the game start
+// Chamada uma vez por entidade
 initialize() {
     this.isStartScreen = true;
     this.isGameOverScreen = false;
@@ -86,9 +86,9 @@ initialize() {
 O método update é utilizado para atualizações de física como movimentar as entidades já que ele é chamado constantimente em um tempo fixo de 16 milissegundos.
 
 ```javascript
-// Called on loop to physics
+// Chamada a cada 16 milissegundos
 update() {
-    // Move the ball
+    // Move a entidade
     this.positionX += this.speedX;
     this.positionY += this.speedY;
 }
@@ -98,7 +98,7 @@ update() {
 O método onCollisionEnter é utilizado para identificar que uma entidade iniciou uma colisão com outra. Recebe por parâmetro o objeto other que é a outra entidade que faz parte da colisão.
 
 ```javascript
-// Called when detect a colision
+// Chamado quando detecta uma colisão
 onCollisionEnter(other) {
     if(other.name == 'Player Paddle' || other.name == 'Computer Paddle')
         this.speedX *= -1;
@@ -111,7 +111,7 @@ onCollisionEnter(other) {
 O método render é chamado a cada frame do jogo. É utilizado para renderizar formas básicas, textos e imagens no canvas.
 
 ```javascript
-// Called on loop to render 
+// Chamado a cada frame
 render() {
     Utils.colorCircle(this.positionX, this.positionY, this.radius, this.color);
 }
@@ -124,7 +124,7 @@ A classe Input possui as propriedades mouseX e mouseY para as cordenadas X e Y d
 
 ```javascript
 if(this.isPlayable) {
-    // Mouse input
+    // Input do mouse
     this.positionY = Input.mouseY;    
 }
 ```
@@ -132,12 +132,12 @@ if(this.isPlayable) {
 Para checar input do teclado basta utilizar o método getKeyDown() da seguinte forma.
 
 ```javascript
-// Start gameplay
+// Inicia o gameplay
 if(Input.getKeyDown('Space')) {
     this.resetGameplay();
 }
 ```
 
-Os nome seguem o padrão da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) do Javascript.
+Os nome seguem o padrão de valores da propriedade [KeyboardEvent.code](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code#Code_values) do Javascript.
 
 ## Utilidades
