@@ -47,7 +47,7 @@ class MinhaEntidade extends Entity {
 ```
 
 ## Hierarquia
-Para que suas entidades sejam colocadas na cena do jogo, ou seja, renderizadas no canvas, é necessário fazer algumas alterações na classe Hierarchy. Ela está dentro da pasta Engine. Você deve instanciar as entidades dentro do metodo estático createHierarchy() e popular o vetor estático entityList com as entidades instanciadas, como feito a seguir.
+Para que suas entidades sejam colocadas na cena do jogo, ou seja, renderizadas no canvas, é necessário fazer algumas implementações na classe Hierarchy que está dentro da pasta Engine. Você deve instanciar as entidades dentro do metodo estático createHierarchy() e popular o vetor estático entityList com as entidades instanciadas, como feito a seguir.
 
 ```javascript
 class Hierarchy {
@@ -66,6 +66,8 @@ class Hierarchy {
     }
 }
 ```
+
+A classe Hierarchy é a úncia classe da Engine que deve ser modificada.
 
 ## Medodos da classe Entity
 
