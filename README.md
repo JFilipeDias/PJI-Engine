@@ -27,7 +27,7 @@ A classe Entity é a classe mãe de todas entidades do jogo. Quando uma entidade
 Para a entidade do seu jogo utilizar os metodos basta usar a herança do JavaScript como no exemplo abaixo.
 
 ```javascript
-class MinhaClasse extends Entity {
+class MinhaEntidade extends Entity {
 
 }
 ```
@@ -35,7 +35,7 @@ class MinhaClasse extends Entity {
 Todas as entidades possuem propriedades name, positionX, positionY, width e height. Para definir os valores dessas propriedades basta usar o super() no construtor da sua classe da seguinte maneira.
 
 ```javascript
-class MinhaClasse extends Entity {
+class MinhaEntidade extends Entity {
     constructor(name, positionX, positionY, width, height, speed, color) {
         // Construtor da classe Entity
         super(name, positionX, positionY, width, height);
