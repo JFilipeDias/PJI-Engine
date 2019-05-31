@@ -73,7 +73,7 @@ class Hierarchy {
 O método initialize é chamado apenas uma vez por entidade no momento em que a pagina web é carregada. Pode ser utilizada para definir algumas coisas no inicio do jogo.
 
 ```javascript
-// Chamada uma vez por entidade
+// Chamado uma vez por entidade
 initialize() {
     this.isStartScreen = true;
     this.isGameOverScreen = false;
@@ -86,7 +86,7 @@ initialize() {
 O método update é utilizado para atualizações de física como movimentar as entidades já que ele é chamado constantimente em um tempo fixo de 16 milissegundos.
 
 ```javascript
-// Chamada a cada 16 milissegundos
+// Chamado a cada 16 milissegundos
 update() {
     // Move a entidade
     this.positionX += this.speedX;
@@ -132,7 +132,7 @@ if(this.isPlayable) {
 Para checar input do teclado basta utilizar o método getKeyDown() da seguinte forma.
 
 ```javascript
-// Inicia o gameplay
+// Reinicia o gameplay
 if(Input.getKeyDown('Space')) {
     this.resetGameplay();
 }
